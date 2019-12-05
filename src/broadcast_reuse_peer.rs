@@ -243,7 +243,7 @@ pub fn connection_reuser<F: FnOnce() -> BoxedNewPeerFuture>(
         })) as BoxedNewPeerFuture
     } else {
         info!("Reusing");
-        let ps: HBroadCaster = rc.clone();
+        let ps: HBroadCaster = rc;
         Box::new(ok(makeclient(ps, queue_len))) as BoxedNewPeerFuture
     }
 }
